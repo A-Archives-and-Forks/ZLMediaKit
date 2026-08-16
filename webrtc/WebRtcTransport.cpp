@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright (c) 2016-present The ZLMediaKit project authors. All Rights Reserved.
  *
  * This file is part of ZLMediaKit(https://github.com/ZLMediaKit/ZLMediaKit).
@@ -425,6 +425,12 @@ void WebRtcTransport::onIceTransportCompleted() {
 
 void WebRtcTransport::onIceTransportDisconnected() {
     InfoL << getIdentifier();
+}
+
+void WebRtcTransport::onIceTransportSelectedTuple(const IceTransport::Pair::Ptr& pair) {
+    if (pair && pair->_socket) {
+        pair->_socket->setSendFlushFlag(false);
+    }
 }
 
 void WebRtcTransport::onIceTransportGatheringCandidate(const IceTransport::Pair::Ptr &pair, const CandidateInfo &candidate) {

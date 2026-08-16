@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright (c) 2016-present The ZLMediaKit project authors. All Rights Reserved.
  *
  * This file is part of ZLMediaKit(https://github.com/ZLMediaKit/ZLMediaKit).
@@ -197,6 +197,7 @@ protected:
     void onIceTransportGatheringCandidate(const IceTransport::Pair::Ptr& pair, const CandidateInfo& candidate) override;
     void onIceTransportCompleted() override;
     void onIceTransportDisconnected() override;
+    void onIceTransportSelectedTuple(const IceTransport::Pair::Ptr& pair) override;
 
     // SctpAssociation::Listener
 #ifdef ENABLE_SCTP
